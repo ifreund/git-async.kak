@@ -33,6 +33,7 @@ define-command -params 1.. \
         mkfifo "$fifo"
 
         eval_in_client 'exec -draft "%%<a-|>tee > '"$fifo"'<ret>"'
+        # eval_in_client "eval -no-hooks write \"$fifo\""
 
         git show ":${buffile_relative}" |
             diff - "$fifo" "$@" |
