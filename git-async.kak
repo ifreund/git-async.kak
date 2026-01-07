@@ -93,21 +93,21 @@ define-command -params 1.. \
                     }
                     elsif ($from_count > 0 and $to_count == 0) {
                         if ($to_line == 0) {
-                            $flags .= " 1|\{red\}$top_char";
+                            $flags .= " 1|\{red+b\}$top_char";
                         } else {
-                            $flags .= " $to_line|\{red\}$del_char";
+                            $flags .= " $to_line|\{red+b\}$del_char";
                         }
                     }
                     elsif ($from_count > 0 and $from_count == $to_count) {
                         for $i (0..$to_count - 1) {
                             $line = $to_line + $i;
-                            $flags .= " $line|\{blue\}$mod_char";
+                            $flags .= " $line|\{white\}$mod_char";
                         }
                     }
                     elsif ($from_count > 0 and $from_count < $to_count) {
                         for $i (0..$from_count - 1) {
                             $line = $to_line + $i;
-                            $flags .= " $line|\{blue\}$mod_char";
+                            $flags .= " $line|\{white\}$mod_char";
                         }
                         for $i ($from_count..$to_count - 1) {
                             $line = $to_line + $i;
@@ -117,10 +117,10 @@ define-command -params 1.. \
                     elsif ($to_count > 0 and $from_count > $to_count) {
                         for $i (0..$to_count - 2) {
                             $line = $to_line + $i;
-                            $flags .= " $line|\{blue\}$mod_char";
+                            $flags .= " $line|\{white\}$mod_char";
                         }
                         $last = $to_line + $to_count - 1;
-                        $flags .= " $last|\{blue+u\}$mod_char";
+                        $flags .= " $last|\{white+u\}$mod_char";
                     }
                 }
             }
